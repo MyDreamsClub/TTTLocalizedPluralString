@@ -134,6 +134,15 @@ static NSString * TTTEnglishPluralRuleForCount(NSUInteger count) {
     }
 }
 
+static NSString * TTTPersianPluralRuleForCount(NSUInteger count) {
+    switch (count) {
+        case 1:
+            return kTTTOnePluralRule;
+        default:
+            return kTTTOtherPluralRule;
+    }
+}
+
 static NSString * TTTFrenchPluralRuleForCount(NSUInteger count) {
     switch (count) {
         case 0:
@@ -508,6 +517,8 @@ NSString * TTTLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInte
         pluralRule = TTTDutchPluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"en"]) {
         pluralRule = TTTEnglishPluralRuleForCount(count);
+    } else if ([languageCode hasPrefix:@"fa"]) {
+        pluralRule = TTTPersianPluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"fr"]) {
         pluralRule = TTTFrenchPluralRuleForCount(count);
     } else if ([languageCode hasPrefix:@"de"]) {
